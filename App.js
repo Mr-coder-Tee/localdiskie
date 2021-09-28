@@ -3,14 +3,37 @@ import React from 'react';
 import { StyleSheet, Text, View,SafeAreaView } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Dashboard from './Components/MainPages/Dashboard'
+import { createStackNavigator } from "@react-navigation/stack";
+import {Tabs,LogIn,SignUp,PostScreen} from './Components/index'
+
+
+
+const Stack = createStackNavigator();
+
+
+
+
 
 export default function App() {
   return (
-    <SafeAreaView>
-        <Dashboard/>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator
+       screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={"Tab"}>
+
+        <Stack.Screen name="Tab" component={Tabs}/>
+        <Stack.Screen name="Signup" component={SignUp}/>
+        <Stack.Screen name="Login" component={LogIn}/>
+        <Stack.Screen name="Splashscreen" component={Tabs}/>
+        <Stack.Screen name="Landingpage" component={Tabs}/>
+        <Stack.Screen name="Post" component={PostScreen}/>
+
+      </Stack.Navigator>
+    </NavigationContainer>
+    
+    
   );
 }
 

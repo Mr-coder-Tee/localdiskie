@@ -3,11 +3,11 @@ import { Text ,View} from 'react-native'
  
 
 const Dashboard = () => {
-    return (  <view>
+    return (  <View>
         <Text>
         Dashboard
         </Text>
-        </view> );
+        </View> );
 }
  
 export default Dashboard;

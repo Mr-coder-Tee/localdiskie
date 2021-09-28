@@ -1,10 +1,10 @@
 import React from 'react'
 import {View ,Text} from 'react-native'
 
-const Splashscreen = () => {
+const Joined = () => {
     return ( <View>
-        <Text>Splashscreen</Text>
+        <Text>Joined</Text>
     </View> );
 }
  
-export default Splashscreen;
+export default Joined;

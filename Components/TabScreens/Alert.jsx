@@ -1,10 +1,10 @@
 import React from 'react'
 import {View ,Text} from 'react-native'
 
-const Splashscreen = () => {
+const Alert = () => {
     return ( <View>
-        <Text>Splashscreen</Text>
+        <Text>Alert</Text>
     </View> );
 }
  
-export default Splashscreen;
+export default Alert;
