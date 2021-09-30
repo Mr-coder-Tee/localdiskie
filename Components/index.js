@@ -13,6 +13,7 @@ import Splashscreen from "./splashscreen/splashscreen";
 import Postcard from "./Card/postcard";
 import PostScreen from "./Post/Post";
 import CommentCard from "./Card/commentcard";
+import Profileheader from "./Headers/profileHeader";
 export {
   Postcard,
   Splashscreen,
@@ -29,4 +30,5 @@ export {
   Profile,
   PostScreen,
   CommentCard,
+  Profileheader,
 };

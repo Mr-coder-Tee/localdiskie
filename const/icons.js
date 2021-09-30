@@ -14,6 +14,12 @@ export const comment=require("../assets/Icons/comment.png")
 export const poster=require("../assets/img/poster.jpg")
 export const poster2=require("../assets/img/poster2.jpg")
 export const poster3=require("../assets/img/poster3.jpg")
+export const editpost=require("../assets/Icons/editpost.png")
+export const notificationpost=require("../assets/Icons/notificationpost.png")
+export const reportpost=require("../assets/Icons/reportpost.png")
+export const saveposr=require("../assets/Icons/saveposr.png")
+export const sharepost=require("../assets/Icons/sharepost.png")
+
 
 
 
@@ -36,5 +42,10 @@ join,
 comment,
 poster2,
 poster3,
-send
+send,
+editpost,
+notificationpost,
+reportpost,
+saveposr,
+sharepost,
 }

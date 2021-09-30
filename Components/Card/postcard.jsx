@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { Avatar, BottomSheet } from "react-native-elements";
 import { icons, FONTS, COLORS } from "../../const/index";
@@ -15,6 +16,18 @@ const Postcard = ({ navigation, data,bottomSheet,bottomSheetComment }) => {
   //if liked text text blue
   //if joined text blue
   const [isVisible, setIsVisible] = useState(false);
+
+  const JoinAlert=()=>(
+    Alert.alert(
+      "Join",
+      "Request to Join has been send!",
+      [
+        {
+          text:"OK",onPress:()=>console.log('Joined OK!')
+        }
+      ]
+    )
+  )
 
   
   console.log("img",data.img)
@@ -91,9 +104,9 @@ const Postcard = ({ navigation, data,bottomSheet,bottomSheetComment }) => {
               <Image
                 source={icons.like}
                 resizeMode="center"
-                style={{ width: 20, height: 20, tintColor: COLORS.black }}
+                style={{ width: 20, height: 20, tintColor: data.liked?"#33A1DE":COLORS.black }}
               />
-              <Text style={styles.commentText}>likes</Text>
+              <Text style={[styles.commentText,{color:data.liked?"#33A1DE":COLORS.darkgray}]}>likes</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -114,9 +127,10 @@ const Postcard = ({ navigation, data,bottomSheet,bottomSheetComment }) => {
               <Image
                 source={icons.join}
                 resizeMode="center"
-                style={{ width: 15, height: 15, tintColor: COLORS.black }}
+                style={{ width: 15, height: 15, tintColor: data.joined?"#33A1DE":COLORS.black }}
               />
-              <Text style={styles.commentText}>Join</Text>
+    
+              <Text style={[styles.commentText,{color: data.joined?"#33A1DE": COLORS.darkgray,}]}>Join</Text>
             </View>
           </TouchableOpacity>
         </View>      
@@ -151,7 +165,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   commentText: {
-    color: COLORS.darkgray,
     marginLeft: 5,
   },
   requestsView: {

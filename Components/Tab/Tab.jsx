@@ -7,12 +7,14 @@ import {
   Dimensions,
   TextInput,
   Animated,
+  ScrollView,
+  StatusBar,
 } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon, Header } from "react-native-elements";
-import { Home, Alert, Figure, LiveScore, Joined, CommentCard, } from "../index";
-import { icons, COLORS } from "../../const/index";
+import { Home, Alert, Figure, LiveScore, Joined, CommentCard } from "../index";
+import { icons, COLORS, FONTS } from "../../const/index";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 import { TouchableOpacity } from "react-native-gesture-handler";
 const commentSheetHeight = Dimensions.get("screen").height - 150;
@@ -21,10 +23,27 @@ const textinputwidth = Dimensions.get("screen").width - 150;
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
+  const currH = 50 + 30; //StatusBar.currentHeight--->remove 30 n put it
+  const scrollY = new Animated.Value(0);
+  const diffClamp = Animated.diffClamp(scrollY, 0, currH); //50 from height of header
+
+  const translateY = diffClamp.interpolate({
+    inputRange: [0, currH], //currH from height of header
+    outputRange: [0, -currH],
+  });
+
+  const scrollEvent = (y) => {
+    scrollY.setValue(y);
+  };
+
   const RenderHeader = () => (
-    <Header>
-      <Text>Header</Text>
-    </Header>
+    <Animated.View
+      style={{
+        transform: [{ translateY: translateY }],
+      }}
+    >
+      
+    </Animated.View>
   );
 
   const bottomSheet = useRef();
@@ -32,17 +51,54 @@ const Tabs = () => {
 
   const BottomSheetView = () => (
     <Animated.View>
-      <BottomSheet hasDraggableIcon ref={bottomSheet} height={300}>
-        <View>
-          <Text>Menu</Text>
-        </View>
+      <BottomSheet hasDraggableIcon ref={bottomSheet} height={400}>
+        <ScrollView style={style.menucontainer}>
+          <TouchableOpacity style={style.menubtns}>
+            <Image
+              source={icons.saveposr}
+              resizeMode="center"
+              style={{ width: 20, height: 20, marginRight: 5 }}
+            />
+            <Text>Save Post</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.menubtns}>
+            <Image
+              source={icons.reportpost}
+              resizeMode="center"
+              style={{ width: 20, height: 20, marginRight: 5 }}
+            />
+            <Text>Report Post</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.menubtns}>
+            <Image
+              source={icons.notificationpost}
+              resizeMode="center"
+              style={{ width: 20, height: 20, marginRight: 5 }}
+            />
+            <Text>Turn on Notification for this Poster</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.menubtns}>
+            <Image
+              source={icons.sharepost}
+              resizeMode="center"
+              style={{ width: 20, height: 20, marginRight: 5 }}
+            />
+            <Text>Share Post</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.menubtns}>
+            <Image
+              source={icons.editpost}
+              resizeMode="center"
+              style={{ width: 20, height: 20, marginRight: 5 }}
+            />
+            <Text>Edit Post</Text>
+          </TouchableOpacity>
+        </ScrollView>
       </BottomSheet>
     </Animated.View>
   );
   const BottomSheetCommeent = () => (
-    <Animated.View 
-      
-    >
+    <Animated.View>
       <BottomSheet
         hasDraggableIcon
         ref={bottomSheetComment}
@@ -65,8 +121,8 @@ const Tabs = () => {
 
   return (
     <View style={style.constainer}>
-      <BottomSheetView/>
-      <BottomSheetCommeent/>
+      <BottomSheetView />
+      <BottomSheetCommeent />
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={{
@@ -81,6 +137,7 @@ const Tabs = () => {
           tabBarShowLabel: false,
           scrollEnabled: true,
           headerShown: false,
+          // header: () => <RenderHeader />,
         }}
       >
         <Tab.Screen
@@ -90,6 +147,7 @@ const Tabs = () => {
               props={props}
               bottomSheet={bottomSheet}
               bottomSheetComment={bottomSheetComment}
+              scrollEvent={scrollEvent}
             />
           )}
           options={{
@@ -205,9 +263,19 @@ const style = StyleSheet.create({
     padding: 10,
     borderRadius: 20,
     borderColor: "rgba(0,0,0,.1)",
-    justifyContent:'center',
-    alignItems:'center'
-
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  menubtns: {
+    flex: 1,
+    padding: 20,
+    marginBottom: 5,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  menucontainer: {
+    // backgroundColor:'pink',
+    flex: 1,
   },
 });
 
