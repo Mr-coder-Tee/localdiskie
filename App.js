@@ -4,7 +4,9 @@ import { StyleSheet, Text, View,SafeAreaView } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
-import {Tabs,LogIn,SignUp,PostScreen} from './Components/index'
+import {LogIn,SignUp,PostScreen,AddFicture} from './Components/index'
+import Tabs from './Components/Tab/Tab'
+import {Figure} from './Components/TabScreens/index'
 
 
 
@@ -21,7 +23,7 @@ export default function App() {
        screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={"Tab"}>
+      initialRouteName={"design"}>
 
         <Stack.Screen name="Tab" component={Tabs}/>
         <Stack.Screen name="Signup" component={SignUp}/>
@@ -29,7 +31,10 @@ export default function App() {
         <Stack.Screen name="Splashscreen" component={Tabs}/>
         <Stack.Screen name="Landingpage" component={Tabs}/>
         <Stack.Screen name="Post" component={PostScreen}/>
+        <Stack.Screen name="AddFicture" component={AddFicture}/>
 
+
+        <Stack.Screen name="design" component={Figure}/>
       </Stack.Navigator>
     </NavigationContainer>
     

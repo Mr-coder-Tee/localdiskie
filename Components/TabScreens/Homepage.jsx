@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, FlatList,Animated ,StatusBar} from "react-native";
+import { View, Text, FlatList,Animated ,StatusBar,SafeAreaView} from "react-native";
 import { Postcard, LogIn, Profileheader } from "../index";
 import { icons } from "../../const/index";
 
@@ -61,27 +61,13 @@ const data = [
   },
 ];
 
+
 const Home = ({ props, bottomSheet, bottomSheetComment, scrollEvent }) => {
-    const currH=50+50 //StatusBar.currentHeight<----
-    const scrollY = new Animated.Value(0);
-  const diffClamp = Animated.diffClamp(scrollY, 0, currH); //currH from height of header
-  const translateY = diffClamp.interpolate({
-    inputRange: [0, currH], //currH from height of header
-    outputRange: [0, -currH],
-  });
+ 
 
   const { navigation } = props;
   return (
-    <View style={{flex:1}}>
-      <Animated.View
-        style={{
-          transform: [{ translateY: translateY }],
-          elevation:4,
-          zIndex:100,
-        }}
-      >
-        <Profileheader />
-      </Animated.View>
+    <SafeAreaView style={{flex:1}}>
       <FlatList
         data={data}
         keyExtractor={(item) => `${item.id}`}
@@ -96,10 +82,10 @@ const Home = ({ props, bottomSheet, bottomSheetComment, scrollEvent }) => {
           );
         }}
         onScroll={(e) => {
-            scrollY.setValue(e.nativeEvent.contentOffset.y);
+          scrollEvent(e.nativeEvent.contentOffset.y);
         }}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

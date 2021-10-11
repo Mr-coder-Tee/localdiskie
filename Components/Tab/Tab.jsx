@@ -13,7 +13,9 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon, Header } from "react-native-elements";
-import { Home, Alert, Figure, LiveScore, Joined, CommentCard } from "../index";
+import { CommentCard } from "../index";
+import AnimatedHeader from "../Headers/Animated";
+import { Home, Alert, Figure, LiveScore, Joined } from "../TabScreens/index";
 import { icons, COLORS, FONTS } from "../../const/index";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -23,10 +25,10 @@ const textinputwidth = Dimensions.get("screen").width - 150;
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
-  const currH = 50 + 30; //StatusBar.currentHeight--->remove 30 n put it
+  // ------scroll event------
+  const currH = 50+30; //StatusBar.currentHeight--->remove 30 n put it
   const scrollY = new Animated.Value(0);
   const diffClamp = Animated.diffClamp(scrollY, 0, currH); //50 from height of header
-
   const translateY = diffClamp.interpolate({
     inputRange: [0, currH], //currH from height of header
     outputRange: [0, -currH],
@@ -34,16 +36,16 @@ const Tabs = () => {
 
   const scrollEvent = (y) => {
     scrollY.setValue(y);
+    
   };
+  // ------scroll event------
 
   const RenderHeader = () => (
     <Animated.View
       style={{
         transform: [{ translateY: translateY }],
       }}
-    >
-      
-    </Animated.View>
+    ></Animated.View>
   );
 
   const bottomSheet = useRef();
@@ -124,6 +126,7 @@ const Tabs = () => {
       <BottomSheetView />
       <BottomSheetCommeent />
       <Tab.Navigator
+      
         initialRouteName="Home"
         screenOptions={{
           tabBarStyle: [
@@ -136,8 +139,8 @@ const Tabs = () => {
           // tabBarActiveTintColor: "#e91e63",
           tabBarShowLabel: false,
           scrollEnabled: true,
-          headerShown: false,
-          // header: () => <RenderHeader />,
+          headerShown: true,
+          header: () => <AnimatedHeader translateY={translateY} lastValue={diffClamp._lastValue}/>,
         }}
       >
         <Tab.Screen

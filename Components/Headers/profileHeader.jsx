@@ -29,7 +29,6 @@ import { icons, COLORS, FONTS } from "../../const/index";
           elevation: 3,
           paddingLeft:10,
           paddingRight:10,
-          marginBottom:50,
         }}
       >
         <View>
