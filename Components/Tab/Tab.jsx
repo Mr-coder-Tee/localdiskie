@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef,useState } from "react";
 import {
   View,
   Text,
@@ -25,8 +25,14 @@ const textinputwidth = Dimensions.get("screen").width - 150;
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
+
+  const [lastvalue,setLastValue]=useState(0);
+
+
+
+  
   // ------scroll event------
-  const currH = 50+30; //StatusBar.currentHeight--->remove 30 n put it
+  const currH = 50+StatusBar.currentHeight; //StatusBar.currentHeight--->remove 30 n put it
   const scrollY = new Animated.Value(0);
   const diffClamp = Animated.diffClamp(scrollY, 0, currH); //50 from height of header
   const translateY = diffClamp.interpolate({
@@ -36,6 +42,7 @@ const Tabs = () => {
 
   const scrollEvent = (y) => {
     scrollY.setValue(y);
+    // setLastValue(diffClamp._lastValue);
     
   };
   // ------scroll event------
@@ -140,7 +147,7 @@ const Tabs = () => {
           tabBarShowLabel: false,
           scrollEnabled: true,
           headerShown: true,
-          header: () => <AnimatedHeader translateY={translateY} lastValue={diffClamp._lastValue}/>,
+          header: () => <AnimatedHeader translateY={translateY} lastValue={lastvalue}/>,
         }}
       >
         <Tab.Screen

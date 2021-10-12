@@ -3,11 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { COLORS, FONTS, icons } from "../../const/index";
 import { Avatar } from "react-native-elements";
 
-const MyFigtureCard = ({ data,nav }) => {
-  console.log("card->", nav);
+const MyFigtureCard = ({ data,navigation }) => {
+  // console.log("card->", navigation);
 
   return (
-    <TouchableOpacity onPress={()=>nav.navigate('AddFicture')}>
+    <TouchableOpacity onPress={()=>navigation.navigate('AddFicture')} activeOpacity={.7}>
       <View style={styles.container}>
         <Avatar
           rounded

@@ -10,7 +10,6 @@ const AnimatedHeader = ({translateY,lastValue}) => {
             transform: [{ translateY: translateY }],
             elevation:4,
             zIndex:100,
-            marginBottom:lastValue===0?60:0,
           }}>
              <Profileheader />
         </Animated.View>

@@ -33,7 +33,7 @@ const Postcard = ({ navigation, data,bottomSheet,bottomSheetComment }) => {
   console.log("img",data.img)
 
   return (
-    <TouchableOpacity >
+    <TouchableOpacity activeOpacity={0.8}>
       <View style={styles.containerView}>
         <View style={styles.userDatailsView}>
           <TouchableOpacity

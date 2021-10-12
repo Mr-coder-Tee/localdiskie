@@ -1,5 +1,12 @@
-import React from "react";
-import { View, Text, FlatList,Animated ,StatusBar,SafeAreaView} from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  Animated,
+  StatusBar,
+  SafeAreaView,
+} from "react-native";
 import { Postcard, LogIn, Profileheader } from "../index";
 import { icons } from "../../const/index";
 
@@ -61,30 +68,28 @@ const data = [
   },
 ];
 
-
 const Home = ({ props, bottomSheet, bottomSheetComment, scrollEvent }) => {
- 
-
   const { navigation } = props;
+  // marginTop: StatusBar.currentHeight + 60
   return (
-    <SafeAreaView style={{flex:1}}>
-      <FlatList
-        data={data}
-        keyExtractor={(item) => `${item.id}`}
-        renderItem={({ item, index }) => {
-          return (
-            <Postcard
-              navigation={navigation}
-              data={item}
-              bottomSheet={bottomSheet}
-              bottomSheetComment={bottomSheetComment}
-            />
-          );
-        }}
-        onScroll={(e) => {
-          scrollEvent(e.nativeEvent.contentOffset.y);
-        }}
-      />
+    <SafeAreaView style={{ flex: 1 }}>
+        <FlatList
+          data={data}
+          keyExtractor={(item) => `${item.id}`}
+          renderItem={({ item, index }) => {
+            return (
+              <Postcard
+                navigation={navigation}
+                data={item}
+                bottomSheet={bottomSheet}
+                bottomSheetComment={bottomSheetComment}
+              />
+            );
+          }}
+          onScroll={(e) => {
+            scrollEvent(e.nativeEvent.contentOffset.y);
+          }}
+        />
     </SafeAreaView>
   );
 };

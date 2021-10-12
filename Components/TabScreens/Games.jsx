@@ -27,7 +27,8 @@ const data = [
   },
 ];
 
-const Figure = ({navigation,route}) => {
+const Figure = ({props}) => {
+  const{navigation}=props
   return (
     <SafeAreaView style={styles.container}>
    
@@ -35,10 +36,10 @@ const Figure = ({navigation,route}) => {
       <FlatList
         data={data}
         showsHorizontalScrollIndicator={false}
-        keyExtractor={(item)=>item.id}
+        keyExtractor={(item)=>`${item.id}`}
         renderItem={({item})=>{
             return(
-                <MyFigtureCard data={item} nav={navigation}/>
+                <MyFigtureCard data={item}  navigation={navigation}/>
             )
         }}
       />

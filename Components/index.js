@@ -23,4 +23,5 @@ export {
   Profileheader,
   MyFigtureCard,
   AddFicture,
+
 };

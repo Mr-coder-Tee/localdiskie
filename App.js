@@ -23,7 +23,7 @@ export default function App() {
        screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={"design"}>
+      initialRouteName={"Tab"}>
 
         <Stack.Screen name="Tab" component={Tabs}/>
         <Stack.Screen name="Signup" component={SignUp}/>
@@ -34,7 +34,7 @@ export default function App() {
         <Stack.Screen name="AddFicture" component={AddFicture}/>
 
 
-        <Stack.Screen name="design" component={Figure}/>
+        <Stack.Screen name="design" component={AddFicture}/>
       </Stack.Navigator>
     </NavigationContainer>
     

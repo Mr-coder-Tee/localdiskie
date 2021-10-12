@@ -7,15 +7,15 @@ import { icons, COLORS, FONTS } from "../../const/index";
      return ( 
         <View
         style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
+          // position: "absolute",
+          // top: 0,
+          // left: 0,
+          // right: 0,
           justifyContent: "space-between",
           alignItems: "center",
           backgroundColor: "skyblue",
           flexDirection: "row",
-          flex: 1,
+          // flex: 1,
           marginTop: StatusBar.currentHeight,
           height: 50,
           shadowColor: "#000",
@@ -32,7 +32,7 @@ import { icons, COLORS, FONTS } from "../../const/index";
         }}
       >
         <View>
-          <Text style={{ ...FONTS.h2, fontWeight: "bold" }}>Local Diskie</Text>
+          <Text style={{ ...FONTS.h2, fontWeight: "bold" ,color:'black'}}>Local Diskie</Text>
         </View>
         <View
           style={{

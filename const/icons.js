@@ -20,6 +20,14 @@ export const reportpost=require("../assets/Icons/reportpost.png")
 export const saveposr=require("../assets/Icons/saveposr.png")
 export const sharepost=require("../assets/Icons/sharepost.png")
 
+export const team1=require("../assets/img/team1.png")
+export const team2=require("../assets/img/team2.png")
+export const team3=require("../assets/img/team3.jpg")
+export const team4=require("../assets/img/team4.jpg")
+export const team5=require("../assets/img/team5.jpg")
+export const team6=require("../assets/img/team6.png")
+export const team7=require("../assets/img/team7.png")
+export const team8=require("../assets/img/team8.png")
 
 
 
@@ -48,4 +56,12 @@ notificationpost,
 reportpost,
 saveposr,
 sharepost,
+team1,
+team2,
+team3,
+team4,
+team5,
+team6,
+team7,
+team8,
 }
