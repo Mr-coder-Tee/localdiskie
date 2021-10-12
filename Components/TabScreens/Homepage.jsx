@@ -21,6 +21,7 @@ const data = [
     when: "8",
     joined: false,
     liked: true,
+    teamlogo:icons.team5,
   },
   {
     id: 2,
@@ -32,6 +33,7 @@ const data = [
     when: "3",
     joined: true,
     liked: true,
+    teamlogo:icons.team2,
   },
   {
     id: 3,
@@ -43,6 +45,7 @@ const data = [
     when: "19",
     joined: false,
     liked: true,
+    teamlogo:icons.team1,
   },
   {
     id: 4,
@@ -54,6 +57,7 @@ const data = [
     when: "1",
     joined: false,
     liked: true,
+    teamlogo:icons.team4,
   },
   {
     id: 5,
@@ -65,6 +69,7 @@ const data = [
     when: "5",
     joined: false,
     liked: false,
+    teamlogo:icons.team6,
   },
 ];
 

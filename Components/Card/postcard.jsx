@@ -42,7 +42,7 @@ const Postcard = ({ navigation, data,bottomSheet,bottomSheetComment }) => {
             <Avatar
               rounded
               size="small"
-              source={icons.profile}
+              source={data.teamlogo}
               activeOpacity={0.7}
             />
             <View style={{ marginLeft: 10, marginRight: 10 }}>
